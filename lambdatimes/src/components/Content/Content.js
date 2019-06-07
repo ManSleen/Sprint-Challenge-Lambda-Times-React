@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-
 import Tabs from "./Tabs";
 import Cards from "./Cards";
+import Carousel from "../Carousel/Carousel";
+import styled, { css } from "styled-components";
 
 import { tabData, cardData } from "../../data";
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default class Content extends Component {
   constructor(props) {
@@ -40,14 +47,15 @@ export default class Content extends Component {
 
   render() {
     return (
-      <div className="content-container">
+      <ContentContainer>
         <Tabs
           selectedTab={this.state.selected}
           selectTabHandler={this.changeSelected}
           tabs={this.state.tabs}
         />
+        <Carousel />
         <Cards cards={this.filterCards()} />
-      </div>
+      </ContentContainer>
     );
   }
 }
